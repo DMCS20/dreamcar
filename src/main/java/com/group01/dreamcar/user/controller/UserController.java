@@ -30,8 +30,9 @@ public class UserController {
     @Operation(summary = "Obtiene un usuario por id")
     @Transactional(readOnly = true)
     @GetMapping("/{id}")
-    public ResponseEntity<UserResponseDTO> getUserById(@PathVariable ObjectId id){
-        return new ResponseEntity<>(userService.getUserById(id), HttpStatus.OK);
+    public ResponseEntity<UserResponseDTO> getUserById(@PathVariable String id){
+        ObjectId oid = new ObjectId(id);
+        return new ResponseEntity<>(userService.getUserById(oid), HttpStatus.OK);
     }
 
     @Operation(summary = "Crea un usuario")

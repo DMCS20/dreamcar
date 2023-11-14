@@ -29,28 +29,33 @@ public class LoanController {
     @Operation(summary = "Obtiene un prestamo por id")
     @Transactional(readOnly = true)
     @GetMapping("/loans/{id}")
-    public ResponseEntity<LoanResponseDTO> getLoanById(@PathVariable ObjectId id){
-        return new ResponseEntity<>(loanService.getLoanById(id), HttpStatus.OK);
+    public ResponseEntity<LoanResponseDTO> getLoanById(@PathVariable String id){
+        ObjectId oid = new ObjectId(id);
+        return new ResponseEntity<>(loanService.getLoanById(oid), HttpStatus.OK);
     }
 
     @Operation(summary = "Obtiene todos los prestamos de un usuario dada su ID (userId)")
     @Transactional(readOnly = true)
     @GetMapping("/users/{userId}/loans")
-    public ResponseEntity<List<LoanResponseDTO>> getLoansByUserId(@PathVariable ObjectId userId){
-        return new ResponseEntity<>(loanService.getLoansByUserId(userId), HttpStatus.OK);
+    public ResponseEntity<List<LoanResponseDTO>> getLoansByUserId(@PathVariable String userId){
+        ObjectId oid = new ObjectId(userId);
+        return new ResponseEntity<>(loanService.getLoansByUserId(oid), HttpStatus.OK);
     }
 
     @Operation(summary = "Obtiene un prestamo de un usuario dada su ID (userId) y el ID del prestamo deseado(loanId)")
     @Transactional(readOnly = true)
     @GetMapping("/users/{userId}/loans/{loanId}")
-    public ResponseEntity<LoanResponseDTO> getLoanByUserIdAndLoanId(@PathVariable ObjectId userId, @PathVariable ObjectId loanId){
-        return new ResponseEntity<>(loanService.getLoanByUserIdAndLoanId(userId, loanId), HttpStatus.OK);
+    public ResponseEntity<LoanResponseDTO> getLoanByUserIdAndLoanId(@PathVariable String userId, @PathVariable String loanId){
+        ObjectId oidUserId = new ObjectId(userId);
+        ObjectId oidLoanId = new ObjectId(loanId);
+        return new ResponseEntity<>(loanService.getLoanByUserIdAndLoanId(oidUserId, oidLoanId), HttpStatus.OK);
     }
 
     @Operation(summary = "Crea un prestamo para un usuario dado su ID (userId)")
     @Transactional
     @PostMapping("/users/{userId}/loans")
-    public ResponseEntity<LoanResponseDTO> createLoan(@PathVariable ObjectId userId, @RequestBody LoanRequestDTO loanRequest){
-        return new ResponseEntity<>(loanService.createLoan(userId, loanRequest), HttpStatus.CREATED);
+    public ResponseEntity<LoanResponseDTO> createLoan(@PathVariable String userId, @RequestBody LoanRequestDTO loanRequest){
+        ObjectId oid = new ObjectId(userId);
+        return new ResponseEntity<>(loanService.createLoan(oid, loanRequest), HttpStatus.CREATED);
     }
 }
