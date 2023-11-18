@@ -27,6 +27,9 @@ public class Loan {
     @Field("monto_prestamo")
     private double precioVentaActivo;
 
+    @Field("tipo_plan")
+    private double tipoPlan;
+
     @Field("cuota_inicial")
     private double cuotaInicialPorcentaje;
 
