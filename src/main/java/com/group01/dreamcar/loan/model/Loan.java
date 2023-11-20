@@ -25,16 +25,19 @@ public class Loan {
     private String moneda;
 
     @Field("monto_prestamo")
-    private double montoPrestamo;
+    private double precioVentaActivo;
+
+    @Field("tipo_plan")
+    private double tipoPlan;
 
     @Field("cuota_inicial")
-    private double cuotaInicial;
+    private double cuotaInicialPorcentaje;
 
     @Field("cuota_final")
-    private double cuotaFinal;
+    private double cuotaFinalPorcentaje;
 
     @Field("anios")
-    private int anios;
+    private int numeroAnios;
 
     @Field("tipo_periodo_gracia")
     private String tipoPeriodoGracia;
@@ -58,7 +61,7 @@ public class Loan {
     private double costesRegistrales;
 
     @Field("gps")
-    private double gps;
+    private double GPS;
 
     @Field("portes")
     private double portes;
@@ -67,13 +70,24 @@ public class Loan {
     private double gastosAdmin;
 
     @Field("seguro_desgravamen")
-    private double seguroDesgravamen;
+    private double seguroDesgravamenPorcentaje;
 
     @Field("seguro_riesgo")
-    private double seguroRiesgo;
+    private double seguroRiesgoPorcentaje;
 
     @Field("tasa_descuento")
-    private double tasaDescuento;
+    private double tasaDescuentoPorcentaje;
+
+    @Field("freq_pago")
+    private double freqPago;
+
+    public double getTipoPlan() {
+        return tipoPlan;
+    }
+
+    public void setTipoPlan(double tipoPlan) {
+        this.tipoPlan = tipoPlan;
+    }
 
     public ObjectId getId() {
         return id;
@@ -99,36 +113,36 @@ public class Loan {
         this.moneda = moneda;
     }
 
-    public double getMontoPrestamo() {
-        return montoPrestamo;
+    public double getPrecioVentaActivo() {
+        return precioVentaActivo;
     }
 
-    public void setMontoPrestamo(double montoPrestamo) {
-        this.montoPrestamo = montoPrestamo;
+    public void setPrecioVentaActivo(double precioVentaActivo) {
+        this.precioVentaActivo = precioVentaActivo;
     }
 
-    public double getCuotaInicial() {
-        return cuotaInicial;
+    public double getCuotaInicialPorcentaje() {
+        return cuotaInicialPorcentaje;
     }
 
-    public void setCuotaInicial(double cuotaInicial) {
-        this.cuotaInicial = cuotaInicial;
+    public void setCuotaInicialPorcentaje(double cuotaInicialPorcentaje) {
+        this.cuotaInicialPorcentaje = cuotaInicialPorcentaje;
     }
 
-    public double getCuotaFinal() {
-        return cuotaFinal;
+    public double getCuotaFinalPorcentaje() {
+        return cuotaFinalPorcentaje;
     }
 
-    public void setCuotaFinal(double cuotaFinal) {
-        this.cuotaFinal = cuotaFinal;
+    public void setCuotaFinalPorcentaje(double cuotaFinalPorcentaje) {
+        this.cuotaFinalPorcentaje = cuotaFinalPorcentaje;
     }
 
-    public int getAnios() {
-        return anios;
+    public int getNumeroAnios() {
+        return numeroAnios;
     }
 
-    public void setAnios(int anios) {
-        this.anios = anios;
+    public void setNumeroAnios(int numeroAnios) {
+        this.numeroAnios = numeroAnios;
     }
 
     public String getTipoPeriodoGracia() {
@@ -187,12 +201,12 @@ public class Loan {
         this.costesRegistrales = costesRegistrales;
     }
 
-    public double getGps() {
-        return gps;
+    public double getGPS() {
+        return GPS;
     }
 
-    public void setGps(double gps) {
-        this.gps = gps;
+    public void setGPS(double GPS) {
+        this.GPS = GPS;
     }
 
     public double getPortes() {
@@ -211,27 +225,35 @@ public class Loan {
         this.gastosAdmin = gastosAdmin;
     }
 
-    public double getSeguroDesgravamen() {
-        return seguroDesgravamen;
+    public double getSeguroDesgravamenPorcentaje() {
+        return seguroDesgravamenPorcentaje;
     }
 
-    public void setSeguroDesgravamen(double seguroDesgravamen) {
-        this.seguroDesgravamen = seguroDesgravamen;
+    public void setSeguroDesgravamenPorcentaje(double seguroDesgravamenPorcentaje) {
+        this.seguroDesgravamenPorcentaje = seguroDesgravamenPorcentaje;
     }
 
-    public double getSeguroRiesgo() {
-        return seguroRiesgo;
+    public double getSeguroRiesgoPorcentaje() {
+        return seguroRiesgoPorcentaje;
     }
 
-    public void setSeguroRiesgo(double seguroRiesgo) {
-        this.seguroRiesgo = seguroRiesgo;
+    public void setSeguroRiesgoPorcentaje(double seguroRiesgoPorcentaje) {
+        this.seguroRiesgoPorcentaje = seguroRiesgoPorcentaje;
     }
 
-    public double getTasaDescuento() {
-        return tasaDescuento;
+    public double getTasaDescuentoPorcentaje() {
+        return tasaDescuentoPorcentaje;
     }
 
-    public void setTasaDescuento(double tasaDescuento) {
-        this.tasaDescuento = tasaDescuento;
+    public void setTasaDescuentoPorcentaje(double tasaDescuentoPorcentaje) {
+        this.tasaDescuentoPorcentaje = tasaDescuentoPorcentaje;
+    }
+
+    public double getFreqPago() {
+        return freqPago;
+    }
+
+    public void setFreqPago(double freqPago) {
+        this.freqPago = freqPago;
     }
 }
