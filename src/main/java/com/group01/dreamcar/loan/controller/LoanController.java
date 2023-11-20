@@ -2,12 +2,14 @@ package com.group01.dreamcar.loan.controller;
 
 import com.group01.dreamcar.loan.dto.LoanRequestDTO;
 import com.group01.dreamcar.loan.dto.LoanResponseDTO;
+import com.group01.dreamcar.loan.dto.LoanResultsResponseDTO;
 import com.group01.dreamcar.loan.mapper.LoanMapper;
 import com.group01.dreamcar.loan.repository.LoanRepository;
 import com.group01.dreamcar.loan.service.LoanService;
 import com.group01.dreamcar.shared.exceptions.ResourceNotFoundException;
 import com.group01.dreamcar.shared.exceptions.ValidationException;
 import com.group01.dreamcar.shared.formulas.CalculadoraGrilla;
+import com.group01.dreamcar.shared.formulas.CalculadoraResultados;
 import com.group01.dreamcar.shared.formulas.DatosEntrada;
 import com.group01.dreamcar.shared.formulas.DatosSalida;
 import io.swagger.v3.oas.annotations.Operation;
@@ -70,6 +72,20 @@ public class LoanController {
     public ResponseEntity<LoanResponseDTO> createLoan(@PathVariable String userId, @RequestBody LoanRequestDTO loanRequest){
         ObjectId oid = new ObjectId(userId);
         return new ResponseEntity<>(loanService.createLoan(oid, loanRequest), HttpStatus.CREATED);
+    }
+
+    @Transactional(readOnly = true)
+    @GetMapping("/loans/{id}/results")
+    public ResponseEntity<LoanResultsResponseDTO> getLoanResults(@PathVariable String id){
+        ObjectId oid = new ObjectId(id);
+        Optional<Loan> loan = loanRepository.findById(oid);
+        if(loan.isEmpty()){
+            throw new ResourceNotFoundException("Loan ID not found");
+        }
+
+        DatosEntrada datosEntrada = loanMapper.toDatosEntrada(loan.get());
+
+        return new ResponseEntity<>(CalculadoraResultados.calculadoraResultados(datosEntrada), HttpStatus.OK);
     }
 
     @Transactional(readOnly = true)
