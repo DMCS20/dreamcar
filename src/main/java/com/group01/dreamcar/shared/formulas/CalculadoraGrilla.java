@@ -174,7 +174,6 @@ public class CalculadoraGrilla {
                 datosSalida.seguroDesgCuotaFinal = seguroDesgCuotaFinal;
                 datosSalida.saldoFinalCuotaFinal = saldoFinalCuotaFinal;
             }
-            System.out.println(datos);
             datos.add(datosSalida);
 
 

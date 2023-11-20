@@ -4,7 +4,6 @@ import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 public class LoanRequestDTO {
-    private ObjectId idUsuario;
 
     private String moneda;
 
@@ -47,13 +46,6 @@ public class LoanRequestDTO {
     private double freqPago;
 
 
-    public ObjectId getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(ObjectId idUsuario) {
-        this.idUsuario = idUsuario;
-    }
 
     public String getMoneda() {
         return moneda;
