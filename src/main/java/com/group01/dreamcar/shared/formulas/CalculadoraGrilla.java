@@ -10,6 +10,8 @@ public class CalculadoraGrilla {
         List<DatosSalida> datos = new ArrayList<>();
 
 
+
+
         //Validacion de Tasa
         double TEA = datosEntrada.calcularTEA(datosEntrada);
 
@@ -43,8 +45,8 @@ public class CalculadoraGrilla {
         System.out.println("tasaDescuentoRentabilidad: " + tasaDescuentoRentabilidad);
 
 
-        // Grilla
-        double saldoInicialCuotaFinal = 0.00;
+        // Grilla - Regular
+
         double interes = 0.00;
         double cuota = 0.00;
         double amortizacion = 0.00;
@@ -55,10 +57,19 @@ public class CalculadoraGrilla {
         double gastosAdmin = 0.00;
         double saldoFinalParaCuota = 0.00;
         double saldoInicialCuota = saldoFinanciarCuotas;
-        double periodoGracia = datosEntrada.getPeriodoGraciaMeses();
+        //double periodoGracia = datosEntrada.getPeriodoGraciaMeses();
+        double periodoGracia = datosEntrada.getCuotasPeriodoGracia();
         double flujo = 0.00;
 
+        // Grilla - Cronograma de la Cuota final o Cuoton
 
+        double saldoInicialCuotaFinal = cuotaFinal / Math.pow(1.00 + TEM + (datosEntrada.getSeguroDesgravamenPorcentaje() / 100.00) , nTotalCuotas + 1.00);
+        double interesCuotaFinal = 0.00;
+        double amortCuotaFinal = 0.00;
+        double seguroDesgCuotaFinal = saldoInicialCuotaFinal * (datosEntrada.getSeguroDesgravamenPorcentaje() / 100.00);
+        double saldoFinalCuotaFinal = 0.00;
+
+        System.out.println(nTotalCuotas);
         for (int i = 1; i <= nTotalCuotas; i++) {
             DatosSalida datosSalida = new DatosSalida();
 
@@ -76,6 +87,14 @@ public class CalculadoraGrilla {
                     gastosAdmin = datosEntrada.getGastosAdmin();
                     saldoFinalParaCuota = saldoInicialCuota + interes;
                     flujo = cuota + seguroDesgCuota + seguroRiesgoGrilla + GPS + portes + gastosAdmin;
+
+                    //Cuoton
+                    interesCuotaFinal = saldoInicialCuotaFinal * TEM;
+                    amortCuotaFinal = 0.00;
+                    seguroDesgCuotaFinal = saldoInicialCuotaFinal * (datosEntrada.getSeguroDesgravamenPorcentaje() / 100.00);
+                    saldoFinalCuotaFinal = saldoInicialCuotaFinal + interesCuotaFinal + seguroDesgCuotaFinal + amortCuotaFinal;
+
+
                 }
                 else if (datosEntrada.getTipoPeriodoGracia().equals("P")) {
 
@@ -90,9 +109,14 @@ public class CalculadoraGrilla {
                     saldoFinalParaCuota = saldoInicialCuota - amortizacion;
                     flujo = cuota + seguroDesgCuota + seguroRiesgoGrilla + GPS + portes + gastosAdmin;
 
+                    //Cuoton
+                    interesCuotaFinal = saldoInicialCuotaFinal * TEM;
+                    amortCuotaFinal = 0.00;
+                    seguroDesgCuotaFinal = saldoInicialCuotaFinal * (datosEntrada.getSeguroDesgravamenPorcentaje() / 100.00);
+                    saldoFinalCuotaFinal = saldoInicialCuotaFinal + interesCuotaFinal + seguroDesgCuotaFinal + amortCuotaFinal;
+
 
                 }
-                datosSalida.saldoInicialCuotaFinal = saldoInicialCuotaFinal;
                 datosSalida.interes = interes;
                 datosSalida.cuota = cuota;
                 datosSalida.amortizacion = amortizacion;
@@ -105,6 +129,13 @@ public class CalculadoraGrilla {
                 datosSalida.saldoInicialCuota = saldoInicialCuota;
                 datosSalida.periodoGracia = periodoGracia;
                 datosSalida.flujo = flujo;
+
+                datosSalida.saldoInicialCuotaFinal = saldoInicialCuotaFinal;
+                datosSalida.interesCuotaFinal = interesCuotaFinal;
+                datosSalida.amortizacionCuotaFinal = amortCuotaFinal;
+                datosSalida.seguroDesgCuotaFinal = seguroDesgCuotaFinal;
+                datosSalida.saldoFinalCuotaFinal = saldoFinalCuotaFinal;
+
 
 
             } else {
@@ -119,7 +150,12 @@ public class CalculadoraGrilla {
                 saldoFinalParaCuota = saldoInicialCuota - amortizacion;
                 flujo = cuota + seguroDesgCuota + seguroRiesgoGrilla + GPS + portes + gastosAdmin;
 
-                datosSalida.saldoInicialCuotaFinal = saldoInicialCuotaFinal;
+                //Cuoton
+                interesCuotaFinal = saldoInicialCuotaFinal * TEM;
+                amortCuotaFinal = 0.00;
+                seguroDesgCuotaFinal = saldoInicialCuotaFinal * (datosEntrada.getSeguroDesgravamenPorcentaje() / 100.00);
+                saldoFinalCuotaFinal = saldoInicialCuotaFinal + interesCuotaFinal + seguroDesgCuotaFinal + amortCuotaFinal;
+
                 datosSalida.interes = interes;
                 datosSalida.cuota = cuota;
                 datosSalida.amortizacion = amortizacion;
@@ -131,15 +167,22 @@ public class CalculadoraGrilla {
                 datosSalida.saldoFinalParaCuota = saldoFinalParaCuota;
                 datosSalida.saldoInicialCuota = saldoInicialCuota;
                 datosSalida.flujo = flujo;
-            }
 
+                datosSalida.saldoInicialCuotaFinal = saldoInicialCuotaFinal;
+                datosSalida.interesCuotaFinal = interesCuotaFinal;
+                datosSalida.amortizacionCuotaFinal = amortCuotaFinal;
+                datosSalida.seguroDesgCuotaFinal = seguroDesgCuotaFinal;
+                datosSalida.saldoFinalCuotaFinal = saldoFinalCuotaFinal;
+            }
+            System.out.println(datos);
             datos.add(datosSalida);
 
+
+            saldoInicialCuotaFinal = saldoFinalCuotaFinal;
             saldoInicialCuota = saldoFinalParaCuota;
 
 
         }
-
 
 
         return datos;

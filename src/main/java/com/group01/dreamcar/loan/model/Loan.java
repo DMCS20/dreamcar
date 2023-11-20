@@ -81,6 +81,14 @@ public class Loan {
     @Field("freq_pago")
     private double freqPago;
 
+    public double getTipoPlan() {
+        return tipoPlan;
+    }
+
+    public void setTipoPlan(double tipoPlan) {
+        this.tipoPlan = tipoPlan;
+    }
+
     public ObjectId getId() {
         return id;
     }

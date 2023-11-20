@@ -13,6 +13,10 @@ import lombok.Setter;
 @Setter
 public class DatosSalida {
     double saldoInicialCuotaFinal;
+    double interesCuotaFinal;
+    double amortizacionCuotaFinal;
+    double seguroDesgCuotaFinal;
+    double saldoFinalCuotaFinal;
     double interes;
     double cuota;
     double amortizacion;
@@ -32,6 +36,38 @@ public class DatosSalida {
 
     public void setSaldoInicialCuotaFinal(double saldoInicialCuotaFinal) {
         this.saldoInicialCuotaFinal = saldoInicialCuotaFinal;
+    }
+
+    public double getInteresCuotaFinal() {
+        return interesCuotaFinal;
+    }
+
+    public void setInteresCuotaFinal(double interesCuotaFinal) {
+        this.interesCuotaFinal = interesCuotaFinal;
+    }
+
+    public double getAmortizacionCuotaFinal() {
+        return amortizacionCuotaFinal;
+    }
+
+    public void setAmortizacionCuotaFinal(double amortizacionCuotaFinal) {
+        this.amortizacionCuotaFinal = amortizacionCuotaFinal;
+    }
+
+    public double getSeguroDesgCuotaFinal() {
+        return seguroDesgCuotaFinal;
+    }
+
+    public void setSeguroDesgCuotaFinal(double seguroDesgCuotaFinal) {
+        this.seguroDesgCuotaFinal = seguroDesgCuotaFinal;
+    }
+
+    public double getSaldoFinalCuotaFinal() {
+        return saldoFinalCuotaFinal;
+    }
+
+    public void setSaldoFinalCuotaFinal(double saldoFinalCuotaFinal) {
+        this.saldoFinalCuotaFinal = saldoFinalCuotaFinal;
     }
 
     public double getInteres() {

@@ -43,7 +43,15 @@ public class DreamcarApplication {
 //		for (DatosSalida datoSalida: datosSalidaList) {
 //			//System.out.println(datoSalida.getPeriodoGracia());
 //			System.out.println("DATOS SALIDA (GRILLA):");
-//			//System.out.println(datoSalida.getSaldoInicialCuotaFinal());
+//
+//			// -----------
+//			System.out.println(datoSalida.getSaldoInicialCuotaFinal());
+//			System.out.println(datoSalida.getInteresCuotaFinal());
+//			System.out.println(datoSalida.getAmortizacionCuotaFinal());
+//			System.out.println(datoSalida.getSeguroDesgCuotaFinal());
+//			System.out.println(datoSalida.getSaldoFinalCuotaFinal());
+//			// -----------
+//
 //			System.out.println(datoSalida.getSaldoInicialCuota());
 //			System.out.println(datoSalida.getInteres());
 //			System.out.println(datoSalida.getCuota());

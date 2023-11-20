@@ -20,11 +20,11 @@ public class DatosEntrada {
     private double seguroRiesgoPorcentaje;
     private String tipoPeriodoGracia;
     private int periodoGraciaMeses;
-    private double cuotasPeriodoGracia;
+    private double cuotasPeriodoGracia; //
     private double tasa;
     private String tipoTasa;
     private double numeroAnios;
-    private double tiempoDias;
+    private double tiempoDias; //
     private double costesNotariales;
     private double costesRegistrales;
     private double GPS;

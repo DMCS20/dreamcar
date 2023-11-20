@@ -10,6 +10,8 @@ public class LoanRequestDTO {
 
     private double precioVentaActivo;
 
+    private double tipoPlan;
+
     private double cuotaInicialPorcentaje;
 
     private double cuotaFinalPorcentaje;
@@ -203,5 +205,13 @@ public class LoanRequestDTO {
 
     public void setFreqPago(double freqPago) {
         this.freqPago = freqPago;
+    }
+
+    public double getTipoPlan() {
+        return tipoPlan;
+    }
+
+    public void setTipoPlan(double tipoPlan) {
+        this.tipoPlan = tipoPlan;
     }
 }

@@ -80,7 +80,23 @@ public class LoanController {
         if(loan.isEmpty()){
             throw new ResourceNotFoundException("Loan ID not found");
         }
+
+        //DatosEntrada datosEntrada = loanMapper.toDatosEntrada(loan.get());
+        //System.out.println("Datos de Entrada: " + datosEntrada);
+
+        //DatosEntrada datosPrueba = new DatosEntrada();
+        //List<DatosSalida> calculadoraResult = CalculadoraGrilla.calculadora(datosPrueba);
+
+
+        // Agrega el siguiente código para imprimir los resultados en la consola.
+        //List<DatosSalida> calculadoraResult = CalculadoraGrilla.calculadora(datosEntrada);
+        //System.out.println("Calculadora Result: " + calculadoraResult);
+
+        //System.out.println("Datos de entrada: " + datosEntrada);
+        //return new ResponseEntity<>(calculadoraResult, HttpStatus.OK);
+
         DatosEntrada datosEntrada = loanMapper.toDatosEntrada(loan.get());
+
         return new ResponseEntity<>(CalculadoraGrilla.calculadora(datosEntrada), HttpStatus.OK);
     }
 }
