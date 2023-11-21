@@ -2,15 +2,19 @@ package com.group01.dreamcar.shared.formulas;
 
 import com.group01.dreamcar.loan.dto.LoanResultsResponseDTO;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 import static com.group01.dreamcar.shared.formulas.CalculadoraGrilla.calculadora;
 
 public class CalculadoraResultados {
     public static LoanResultsResponseDTO calculadoraResultados(DatosEntrada datosEntrada){
         LoanResultsResponseDTO resultados = new LoanResultsResponseDTO();
+        List<Double> flujos = new ArrayList<>();
 
         resultados.setMoneda(datosEntrada.getMoneda());
+        resultados.setTipoPeriodoGracia(datosEntrada.getTipoPeriodoGracia());
         //Del financiamiento
         resultados.setTEA(datosEntrada.calcularTEA(datosEntrada));
         resultados.setTEM(Math.pow(1.00 + datosEntrada.calcularTEA(datosEntrada), datosEntrada.getFreqPago() / 360.00 ) - 1.00);
@@ -35,14 +39,44 @@ public class CalculadoraResultados {
             resultados.setGPSTotal(resultados.getGPSTotal() + datosSalida.GPS);
             resultados.setPortesTotal(resultados.getPortesTotal() + datosSalida.portes);
             resultados.setGastosAdminTotal(resultados.getGastosAdminTotal() + datosSalida.gastosAdmin);
+
+            flujos.add(datosSalida.flujo);
         }
 
         //Indicadores de rentabilidad
         resultados.setTasaDescuentoRentabilidad(Math.pow(1 + (datosEntrada.getTasaDescuentoPorcentaje() / 100.00), (datosEntrada.getFreqPago() / 360.00)) - 1.00);
-        //TODO: Calcular VAN
-        //TODO: Calcular TIR
-        //TODO: Calcular TCEA
+//        resultados.setTIR(calcularTIR(flujos.stream().mapToDouble(Double::doubleValue).toArray()));
+//        resultados.setVAN(calcularVAN(flujos.stream().mapToDouble(Double::doubleValue).toArray(), resultados.getTIR()));
+//        resultados.setTCEA(Math.pow(1 + resultados.getTIR(), 360.00 / datosEntrada.getFreqPago()) - 1.00);
 
         return resultados;
     }
+
+//    private static double calcularVAN(double[] flujos, double tir) {
+//        double van = 0.0;
+//        for (int i = 0; i < flujos.length; i++) {
+//            van += flujos[i] / Math.pow(1 + tir, i);
+//        }
+//        return van;
+//    }
+//
+//    private static double calcularTIR(double[] flujos) {
+//        Function<Double, Double> vanFunction = rate -> calcularVAN(flujos, rate);
+//
+//        double tir = 0.1;
+//        double tasaAnterior = 0.0;
+//
+//        while (Math.abs(tir - tasaAnterior) > 0.0001) {
+//            tasaAnterior = tir;
+//            double van = vanFunction.apply(tir);
+//
+//            if (van > 0) {
+//                tir += 0.01;
+//            } else {
+//                tir -= 0.01;
+//            }
+//        }
+//
+//        return tir;
+//    }
 }

@@ -94,7 +94,7 @@ public class CalculadoraGrilla {
                     seguroDesgCuotaFinal = saldoInicialCuotaFinal * (datosEntrada.getSeguroDesgravamenPorcentaje() / 100.00);
                     saldoFinalCuotaFinal = saldoInicialCuotaFinal + interesCuotaFinal + seguroDesgCuotaFinal + amortCuotaFinal;
 
-
+                    datosSalida.setTipoPeriodoGracia("T");
                 }
                 else if (datosEntrada.getTipoPeriodoGracia().equals("P")) {
 
@@ -115,7 +115,7 @@ public class CalculadoraGrilla {
                     seguroDesgCuotaFinal = saldoInicialCuotaFinal * (datosEntrada.getSeguroDesgravamenPorcentaje() / 100.00);
                     saldoFinalCuotaFinal = saldoInicialCuotaFinal + interesCuotaFinal + seguroDesgCuotaFinal + amortCuotaFinal;
 
-
+                    datosSalida.setTipoPeriodoGracia("P");
                 }
                 datosSalida.interes = interes;
                 datosSalida.cuota = cuota;
@@ -173,6 +173,7 @@ public class CalculadoraGrilla {
                 datosSalida.amortizacionCuotaFinal = amortCuotaFinal;
                 datosSalida.seguroDesgCuotaFinal = seguroDesgCuotaFinal;
                 datosSalida.saldoFinalCuotaFinal = saldoFinalCuotaFinal;
+                datosSalida.setTipoPeriodoGracia("S");
             }
             datos.add(datosSalida);
 

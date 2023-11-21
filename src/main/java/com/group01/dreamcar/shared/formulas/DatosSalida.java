@@ -29,6 +29,15 @@ public class DatosSalida {
     double saldoInicialCuota;
     double periodoGracia;
     double flujo;
+    String tipoPeriodoGracia;
+
+    public String getTipoPeriodoGracia() {
+        return tipoPeriodoGracia;
+    }
+
+    public void setTipoPeriodoGracia(String tipoPeriodoGracia) {
+        this.tipoPeriodoGracia = tipoPeriodoGracia;
+    }
 
     public double getSaldoInicialCuotaFinal() {
         return saldoInicialCuotaFinal;

@@ -2,6 +2,7 @@ package com.group01.dreamcar.loan.dto;
 
 public class LoanResultsResponseDTO {
     String moneda;
+    private String tipoPeriodoGracia;
     double TEA;
     double TEM;
     double nCuotasxAnio;
@@ -25,6 +26,14 @@ public class LoanResultsResponseDTO {
     double TCEA;
     double VAN;
     ///////////////////////////////
+
+    public String getTipoPeriodoGracia() {
+        return tipoPeriodoGracia;
+    }
+
+    public void setTipoPeriodoGracia(String tipoPeriodoGracia) {
+        this.tipoPeriodoGracia = tipoPeriodoGracia;
+    }
 
     public String getMoneda() {
         return moneda;
