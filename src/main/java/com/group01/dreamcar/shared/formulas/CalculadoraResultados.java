@@ -10,6 +10,7 @@ public class CalculadoraResultados {
     public static LoanResultsResponseDTO calculadoraResultados(DatosEntrada datosEntrada){
         LoanResultsResponseDTO resultados = new LoanResultsResponseDTO();
 
+        resultados.setMoneda(datosEntrada.getMoneda());
         //Del financiamiento
         resultados.setTEA(datosEntrada.calcularTEA(datosEntrada));
         resultados.setTEM(Math.pow(1.00 + datosEntrada.calcularTEA(datosEntrada), datosEntrada.getFreqPago() / 360.00 ) - 1.00);

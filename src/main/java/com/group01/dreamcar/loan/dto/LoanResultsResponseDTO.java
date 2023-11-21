@@ -1,6 +1,7 @@
 package com.group01.dreamcar.loan.dto;
 
 public class LoanResultsResponseDTO {
+    String moneda;
     double TEA;
     double TEM;
     double nCuotasxAnio;
@@ -24,6 +25,14 @@ public class LoanResultsResponseDTO {
     double TCEA;
     double VAN;
     ///////////////////////////////
+
+    public String getMoneda() {
+        return moneda;
+    }
+
+    public void setMoneda(String moneda) {
+        this.moneda = moneda;
+    }
 
     public double getTEA() {
         return TEA;
